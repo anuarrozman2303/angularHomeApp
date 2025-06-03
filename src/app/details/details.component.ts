@@ -67,7 +67,10 @@ export class DetailsComponent {
   constructor() {
     // this.housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
     const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    // this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+      this.housingLocation = housingLocation;
+    });
   }
 
   submitApplication() {
@@ -77,5 +80,5 @@ export class DetailsComponent {
       this.applyForm.value.email ?? '', 
     );
   }
-  
+
 }
